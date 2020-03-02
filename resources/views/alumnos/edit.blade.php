@@ -32,11 +32,20 @@
         <label for="semestre">Semestre</label>
         <input type="number" class="form-control" name="semestre"value="{{$alumno->semestre}}">
     </div>
+
+    @if($alumno->sexo=="hombre")
     <div class="form-group">
         <label for="sexo">Sexo</label><br>
-        Hombre <input type="radio" class="radio" name="sexo" value="hombre"><br>
+        Hombre <input type="radio" class="radio" checked name="sexo" value="hombre"><br>
         Mujer <input type="radio" class="radio" name="sexo" value="mujer">
     </div>
+    @else
+    <div class="form-group">
+        <label for="sexo">Sexo</label><br>
+        Hombre <input type="radio" class="radio"  name="sexo" value="hombre"><br>
+        Mujer <input type="radio" class="radio" checked name="sexo" value="mujer">
+    </div>
+    @endif
     <button type="submit" class="btn btn-primary">Guardar</button>
     <button type="reset" class="btn btn-secondary">Cancelar</button>
     <a class="btn btn-warning" href="/alumnos" role="button">Volver</a>
