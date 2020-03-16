@@ -8,10 +8,16 @@ use App\Alumno;
 class AlumnoController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $alumnos = Alumno::all();
-        return view('alumnos.index',['alumnos'=>$alumnos]);
+        if($request)
+        {
+            $query = trim($request->get('search'));
+            $alumnos = Alumno::where('nombre','LIKE','%'.$query.'%')
+            ->orderBy('id', 'asc')
+            ->paginate(1);
+            return view('alumnos.index',['alumnos'=>$alumnos,'search'=>$query]);
+        }
     }
 
     public function create()

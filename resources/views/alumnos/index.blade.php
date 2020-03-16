@@ -16,6 +16,13 @@
 </div>
 @endif
     <h2>Alumnos registrados<a href="alumnos/create"><button type="button" class="btn btn-success float-right">Registrar alumnos</button></a></h2>
+    <h6>
+        @if($search)
+            <div class="alert alert-primary" role="alert">
+                Resultados de busqueda '{{$search}}':
+            </div>
+        @endif
+    </h6>
     <table class="table table-striped">
     <thead>
         <tr>
@@ -42,4 +49,9 @@
     @endforeach  
     </tbody>
     </table>
+    <div class="row">
+        <div class="mx-auto">
+            {{$alumnos->links()}}
+        </div>
+    </div>
 @endsection
